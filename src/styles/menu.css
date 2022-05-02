@@ -1,0 +1,38 @@
+.menu {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 80vw;
+  max-width: 300px;
+  padding: 10px;
+  text-align: right;
+  background-color: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.2s;
+}
+.menu.show {
+  transform: translateX(0%);
+}
+.menu nav {
+  margin-top: 50px;
+}
+.menu ul li {
+  list-style: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin: 10px;
+}
+.menu ul li a {
+  text-decoration: none;
+  color: black;
+}
+.menu > button {
+  right: 0;
+}
+.menu > img {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 50px;
+}
+
+/*# sourceMappingURL=menu.css.map */

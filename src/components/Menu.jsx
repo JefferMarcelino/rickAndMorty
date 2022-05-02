@@ -2,7 +2,7 @@ import logoRM from "../assets/images/rickAndMortyLogo.png"
 import CloseIcon from "../assets/images/closeIcon.webp"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
-import "../styles/menu.scss"
+import "../styles/menu.css"
 
 const Menu = ({ setIsMenuOpen, isMenuOpen}) => {
     const Navigate = useNavigate()
