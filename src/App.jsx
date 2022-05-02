@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react'
+import Character from './components/Character'
 import "./App.css"
 
 function App() {
   const [ characterInformations, setCharacterInformations] = useState()
+  const [ data, setData ] = useState()
+  const [ url, setUrl ] = useState("https://rickandmortyapi.com/api/character/?page=1")
 
   useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character")
+    fetch(`${url}`)
     .then(response => response.json())
     .then(data => {
       setCharacterInformations(data.results)
+      setData(data)
     })
-  }, [])
+  }, [url])
 
   useEffect(() => {
     console.log(characterInformations)
@@ -18,20 +22,35 @@ function App() {
 
   return (
     <div className="App">
-      { characterInformations && characterInformations.map(character => {
-          return(
-            <div className="character" key={ character.id }>
-              <img src={ character.image } alt="" />
-              <div className="info">
-                <p>Name: { character.name }</p>
-                <p>Gender: { character.gender }</p>
-                <p>Origin: { character.origin.name }</p>
-                <p>Life Status: { character.status }</p>
-              </div>
-            </div>
-          )
-        })
-       }
+      <h1>All Characters</h1>
+      <div className="characters">
+        { characterInformations && characterInformations.map(character => {
+            return <Character character={character} />
+          })
+         }
+      </div>
+
+       <div className="buttons">
+         <button 
+         className="prev"
+         onClick={() => {
+           if (data.info.prev !== null) {
+             setUrl(data.info.prev)
+             window.scrollTo(0, 0)
+           }
+         }}
+         >Prev</button>
+         
+         <button 
+         className="next"
+         onClick={e => {
+           if (data.info.next !== null) {
+             setUrl(data.info.next)
+             window.scrollTo(0, 0)
+            } 
+         }}
+         >Next</button>
+       </div>
     </div>
   )
 }

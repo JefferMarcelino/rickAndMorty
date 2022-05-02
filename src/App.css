@@ -6,13 +6,25 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .App {
-    display: flex;
-    flex-wrap: wrap;
     padding: 10px;
-    justify-content: center;
     background-color: #01AFC8;
     font-family: 'Poppins', sans-serif;
+}
+
+.App h1 {
+    text-align: center;
+    color: white;
+}
+
+.characters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .character {
@@ -36,4 +48,20 @@
 .info p {
     margin-bottom: 10px;
     line-height: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.buttons button:hover {
+    filter: brightness(80%);
 }
