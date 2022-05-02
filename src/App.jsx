@@ -1,56 +1,36 @@
-import { useState, useEffect } from 'react'
-import Character from './components/Character'
+import { useState } from 'react'
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import Menu from './components/Menu'
+import HamburgerMenu from "../src/assets/images/hamburgerIcon.png"
 import "./App.css"
+import AllCharacters from './pages/AllCharacters';
+import AllLocations from './pages/AllLocations';
 
 function App() {
-  const [ characterInformations, setCharacterInformations] = useState()
-  const [ data, setData ] = useState()
-  const [ url, setUrl ] = useState("https://rickandmortyapi.com/api/character/?page=1")
-
-  useEffect(() => {
-    fetch(`${url}`)
-    .then(response => response.json())
-    .then(data => {
-      setCharacterInformations(data.results)
-      setData(data)
-    })
-  }, [url])
-
-  useEffect(() => {
-    console.log(characterInformations)
-  }, [characterInformations])
+  
+  const [ isMenuOpen, setIsMenuOpen ] = useState(false)
 
   return (
     <div className="App">
-      <h1>All Characters</h1>
-      <div className="characters">
-        { characterInformations && characterInformations.map(character => {
-            return <Character character={character} />
-          })
-         }
-      </div>
+      
+      <button 
+      className='toggle'
+      onClick={() => { 
+        setIsMenuOpen(true) 
+        window.document.body.style.overflowY = "hidden"
+      }}
+      >
+        <img src={ HamburgerMenu } alt="" />
+      </button>
 
-       <div className="buttons">
-         <button 
-         className="prev"
-         onClick={() => {
-           if (data.info.prev !== null) {
-             setUrl(data.info.prev)
-             window.scrollTo(0, 0)
-           }
-         }}
-         >Prev</button>
-         
-         <button 
-         className="next"
-         onClick={e => {
-           if (data.info.next !== null) {
-             setUrl(data.info.next)
-             window.scrollTo(0, 0)
-            } 
-         }}
-         >Next</button>
-       </div>
+
+      <BrowserRouter>
+        <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
+        <Routes>
+          <Route path="/" element={<AllCharacters/>}/>
+          <Route path="/all-locations" element={<AllLocations/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }

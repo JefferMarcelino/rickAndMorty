@@ -11,9 +11,31 @@ html {
 }
 
 .App {
-    padding: 10px;
     background-color: #01AFC8;
     font-family: 'Poppins', sans-serif;
+    padding-top: 50px;
+}
+
+.App button.toggle {
+    position: absolute;
+    top: 0;
+}
+
+.all-characters,
+.all-locations {
+    padding: 0 10px;
+}
+
+.toggle {
+    padding: 0px;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 10px;
+    border: none;
+}
+
+.toggle img{
+    max-width: 32px;
 }
 
 .App h1 {
@@ -21,17 +43,24 @@ html {
     color: white;
 }
 
-.characters {
+.characters,
+.locations {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.character {
+.character,
+.location {
     background-color: #F8EC72;
     margin: 10px;
     border-radius: 18px;
     max-width: 300px;
+}
+
+.location {
+    padding: 5px;
+    width: 100%;
 }
 
 .character img {
@@ -39,8 +68,8 @@ html {
 }
 
 .info {
-    padding: 10px;
-    text-align: center;
+    padding: 5px 15px;
+    text-align: left;
     color: black;
     font-weight: 700;
 }
@@ -53,10 +82,16 @@ html {
 .buttons {
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .buttons button {
     padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F8EC72;
+    color: black;
+    font-weight: 500;
+    letter-spacing: 1px;
     margin: 10px;
     border-radius: 8px;
     border: none;
