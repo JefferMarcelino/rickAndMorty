@@ -1,3 +1,5 @@
+import "../styles/character.css"
+
 const Character = ({ character }) => {
     return ( 
         <div className="character" key={ character.id }>

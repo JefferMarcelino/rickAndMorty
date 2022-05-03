@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Character from '../components/Character'
+import Buttons from '../components/Buttons'
 
 const AllCharacters = () => {
     const [ characterInformations, setCharacterInformations] = useState()
@@ -13,12 +14,7 @@ const AllCharacters = () => {
           setCharacterInformations(data.results)
           setData(data)
         })
-      }, [url])
-    
-    useEffect(() => {
-        console.log(characterInformations)
-    }, [characterInformations])
-
+    }, [url])
     
     return (
         <div className="all-characters">
@@ -30,27 +26,7 @@ const AllCharacters = () => {
                 }
             </div>
 
-            <div className="buttons">
-                <button 
-                className="prev"
-                onClick={() => {
-                if (data.info.prev !== null) {
-                    setUrl(data.info.prev)
-                    window.scrollTo(0, 0)
-                }
-                }}
-                >Prev</button>
-                
-                <button 
-                className="next"
-                onClick={e => {
-                if (data.info.next !== null) {
-                    setUrl(data.info.next)
-                    window.scrollTo(0, 0)
-                    } 
-                }}
-                >Next</button>
-            </div>
+            { data && <Buttons urlInfo={ data.info } setUrl={ setUrl } />}
         </div>
     );
 }

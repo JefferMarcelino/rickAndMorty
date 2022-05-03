@@ -1,3 +1,5 @@
+import "../styles/location.css"
+
 const Location = ({ location }) => {
     return ( 
         <div className="location" key={ location.id }>

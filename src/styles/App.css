@@ -58,15 +58,6 @@ html {
     max-width: 300px;
 }
 
-.location {
-    padding: 5px;
-    width: 100%;
-}
-
-.character img {
-    width: 100%;
-}
-
 .info {
     padding: 5px 15px;
     text-align: left;

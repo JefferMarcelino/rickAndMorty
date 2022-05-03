@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Location from '../components/Location'
+import Buttons from '../components/Buttons'
 
 const AllLocations = () => {
     const [ locationInformations, setLocationInformations] = useState()
@@ -13,12 +14,7 @@ const AllLocations = () => {
           setLocationInformations(data.results)
           setData(data)
         })
-      }, [url])
-    
-    useEffect(() => {
-        console.log(locationInformations)
-    }, [locationInformations])
-
+    }, [url])
     
     return (
         <div className="all-locations">
@@ -31,27 +27,7 @@ const AllLocations = () => {
                 }
             </div>
 
-            <div className="buttons">
-                <button 
-                className="prev"
-                onClick={() => {
-                if (data.info.prev !== null) {
-                    setUrl(data.info.prev)
-                    window.scrollTo(0, 0)
-                }
-                }}
-                >Prev</button>
-                
-                <button 
-                className="next"
-                onClick={e => {
-                if (data.info.next !== null) {
-                    setUrl(data.info.next)
-                    window.scrollTo(0, 0)
-                    } 
-                }}
-                >Next</button>
-            </div>
+            { data && <Buttons urlInfo={ data.info } setUrl={ setUrl } />}
         </div>
     );
 }

@@ -1,33 +1,34 @@
+import { useNavigate } from "react-router-dom"
+
+import "../styles/menu.css"
+
 import logoRM from "../assets/images/rickAndMortyLogo.png"
 import CloseIcon from "../assets/images/closeIcon.webp"
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
-import "../styles/menu.css"
 
 const Menu = ({ setIsMenuOpen, isMenuOpen}) => {
     const Navigate = useNavigate()
+
+    const openMenu = (setIsMenuOpen) => {
+        setIsMenuOpen(false)
+        window.document.body.style.overflowY = "scroll"
+    }
+
     return ( 
         <div className={`menu ${isMenuOpen ? "show" : ""}`}>
-            <button 
-            className='toggle'
-            onClick={() => { 
-                setIsMenuOpen(false)
-                window.document.body.style.overflowY = "scroll"
-             }}
-            >
+            <button className='toggle'
+            onClick={() => { openMenu(setIsMenuOpen) }}>
                 <img src={ CloseIcon } alt="" />
-                </button>
+            </button>
             <img src={ logoRM } alt="Rick and Morty Logo" />
             <nav>
                 <ul>
                     <li onClick={() => {
-                        setIsMenuOpen(false)
-                        window.document.body.style.overflowY = "scroll"
+                        openMenu(setIsMenuOpen)
                         Navigate("/")
                     }}>All Characters</li>
+
                     <li onClick={() => {
-                        setIsMenuOpen(false)
-                        window.document.body.style.overflowY = "scroll"
+                        openMenu(setIsMenuOpen)
                         Navigate("/all-locations")
                     }}>All Locations</li>
                 </ul>
